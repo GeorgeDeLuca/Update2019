@@ -56,6 +56,7 @@ namespace SalesWebMVC
             {
                 routes.MapRoute(
                     name: "default",
+                    // o id? quer dizer que é opcional, por caua do ?
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }

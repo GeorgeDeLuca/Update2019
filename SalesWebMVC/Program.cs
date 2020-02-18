@@ -12,7 +12,7 @@ namespace SalesWebMVC
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args)  // entrepoint
         {
             CreateWebHostBuilder(args).Build().Run();
         }

@@ -8,16 +8,24 @@ using SalesWebMVC.Models;
 
 namespace SalesWebMVC.Controllers
 {
+    // o .Net é baseado em nomes, entao, o controlador HomeController, será a pagina home
     public class HomeController : Controller
     {
+        // o nome do metodo é mapeado nas acoes
         public IActionResult Index()
         {
-            return View();
+            // IActionResult é um tipo genérico
+
+            // este metodo é a acao padrao
+            return View();  // View é do tipo ViewResult
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            // este metodo está ligado ao ficheiro About.cshtml
+            //ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Salles web MVC App from C# Course";
+            ViewData["Professor"] = "George De Luca";
 
             return View();
         }

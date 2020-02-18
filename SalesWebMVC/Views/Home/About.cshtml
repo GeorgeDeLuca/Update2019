@@ -1,7 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    // aqui posso meter codicos C#, pelo fato de ter o bloco @{ }
+    ViewData["Title"] = "About 123";  // o campo Title é o mesmo do Title logo mais abaixo
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Professor @ViewData["Professor"]</p>
+
+<address>
+  <strong>More Information: </strong>
+    <a href="http://www.deluca.eti.br">Deluca.com.br</a>
+</address>
