@@ -1,6 +1,7 @@
 using System;
 
-namespace SalesWebMVC.Models
+// esta classe não é um model, não é uma entidade do negocio, é apenas um modelo auxiliar para povoar as telas
+namespace SalesWebMVC.Models.ViewModes
 {
     public class ErrorViewModel
     {
