@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Models;
+using SalesWebMVC.Data;
 
 namespace SalesWebMVC
 {
@@ -44,15 +45,24 @@ namespace SalesWebMVC
             services.AddDbContext<SalesWebMVCContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("SalesWebMVCContext"), 
                                      builder => builder.MigrationsAssembly("SalesWebMVC")));
+
+            // regista o serviço no sistema de gestão de injeção de dependencia da aplicação
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        // foi inserido o parametro seedingService
+        // este parametro foi inserido, pois foi feita a injeção de dependencia no método acima
+        // o metodo Configure faz a instanciação automatica do seedingService
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
+            // estou em perfil de desenvolvimento ?
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
+            // senao, estou no perfil de produção 
             else
             {
                 app.UseExceptionHandler("/Home/Error");
