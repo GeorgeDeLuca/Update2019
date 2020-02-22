@@ -13,6 +13,8 @@ namespace SalesWebMVC.Models
         public double BaseSalary { get; set; }
 
         public Department Department { get; set; }
+        // o fato de ter criado a prop DepartmentId (com o Id no final) garante que essa prop é obrigatoria
+        public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
         public Seller()
