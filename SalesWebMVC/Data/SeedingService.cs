@@ -9,6 +9,7 @@ namespace SalesWebMVC.Data
 {
     public class SeedingService
     {
+        // é obrigatório ir no ficheiro Satartup.cs e registar a classe no metodo ConfigureServices
         private SalesWebMVCContext _context;
 
         public SeedingService(SalesWebMVCContext context)

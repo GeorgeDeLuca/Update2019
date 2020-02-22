@@ -8,6 +8,7 @@ namespace SalesWebMVC.Services
 {
     public class SellerService
     {
+        // é obrigatório ir no ficheiro Satartup.cs e registar a classe no metodo ConfigureServices
         private readonly SalesWebMVCContext _context;
 
         public SellerService(SalesWebMVCContext contex)
@@ -23,7 +24,7 @@ namespace SalesWebMVC.Services
 
         public void Insert(Seller obj)
         {
-            obj.Department = _context.Department.First();
+            //obj.Department = _context.Department.First();
             _context.Add(obj);  // add ao contexto
             _context.SaveChanges(); // grava no BD
         }
