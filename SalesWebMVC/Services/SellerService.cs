@@ -20,5 +20,11 @@ namespace SalesWebMVC.Services
             // ainda operação sincrona - bloqueia a app ao ser executada
             return _context.Seller.ToList();
         }
+
+        public void Insert(Seller obj)
+        {
+            _context.Add(obj);  // add ao contexto
+            _context.SaveChanges(); // grava no BD
+        }
     }
 }
