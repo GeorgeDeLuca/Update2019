@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Models;
 using SalesWebMVC.Data;
 using SalesWebMVC.Services;
+// inseridos:
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace SalesWebMVC
 {
@@ -59,6 +62,16 @@ namespace SalesWebMVC
         // o metodo Configure faz a instanciação automatica do seedingService
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
+            // configuração para formatações de data e moedas - EUA
+            var enUS = new CultureInfo("es-US");
+            var localizationOption = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(enUS),
+                SupportedCultures = new List<CultureInfo> { enUS },
+                SupportedUICultures = new List<CultureInfo> { enUS }
+            };
+            app.UseRequestLocalization(localizationOption);
+
             // estou em perfil de desenvolvimento ?
             if (env.IsDevelopment())
             {
