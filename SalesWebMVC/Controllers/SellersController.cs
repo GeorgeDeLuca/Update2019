@@ -43,6 +43,13 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]  // previne ataques CSRF
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModels { Seller = seller, Departments = departments };
+                return View(viewModel);
+                //return View(seller);
+            }
             _sellerService.Insert(seller);
             //return RedirectToAction("Index"); ou
             return RedirectToAction(nameof(Index)); 
@@ -113,6 +120,13 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]  // previne ataques CSRF
         public IActionResult Edit(int id, Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModels { Seller = seller, Departments = departments};
+                return View(viewModel);
+                //return View(seller);
+            }
             if (id != seller.Id)
             {
                 //return BadRequest();
